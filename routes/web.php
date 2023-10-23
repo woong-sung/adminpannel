@@ -21,18 +21,18 @@ Route::group([ 'as' => 'eldmin.' ], function () {
   // tools - menu builder
   // menu
   Route::group([ 'as' => 'menus.', 'prefix' => 'menus' ], function () {
-    Route::post('/', [ \App\Http\Controllers\MenuController::class, 'storeMenu', 'as' => 'store' ]);
+    Route::post('/', [ \App\Http\Controllers\MenuController::class, 'store', 'as' => 'store' ]);
     Route::get('/', [ \App\Http\Controllers\MenuController::class, 'index', 'as' => 'index' ]);
-    Route::patch('/{menu}', [ \App\Http\Controllers\MenuController::class, 'editMenu', 'as' => 'update' ]);
-    Route::delete('/{menu}', [ \App\Http\Controllers\MenuController::class, 'deleteMenu', 'as' => 'delete' ]);
-    Route::post('/{menu}/order', [ \App\Http\Controllers\MenuController::class, 'orderMenuItem', 'as' => 'order' ]);
+    Route::patch('/{menu}', [ \App\Http\Controllers\MenuController::class, 'update', 'as' => 'update' ]);
+    Route::delete('/{menu}', [ \App\Http\Controllers\MenuController::class, 'destroy', 'as' => 'delete' ]);
+    Route::post('/{menu}/order', [ \App\Http\Controllers\MenuController::class, 'order', 'as' => 'order' ]);
   });
   // menu items
   Route::group([ 'as' => 'menu_items.', 'prefix' => 'menu-items' ], function () {
-    Route::post('/', [ \App\Http\Controllers\MenuController::class, 'addMenuItem', 'as' => 'store' ]);
-    Route::get('/', [ \App\Http\Controllers\MenuController::class, 'showMenuItems', 'as' => 'show' ]);
-    Route::patch('/{menu_item}', [ \App\Http\Controllers\MenuController::class, 'editMenuItem', 'as' => 'update' ]);
-    Route::delete('/{menu_item}', [ \App\Http\Controllers\MenuController::class, 'deleteMenuItem', 'as' => 'delete' ]);
+    Route::get('/', [ \App\Http\Controllers\MenuItemController::class, 'show', 'as' => 'show' ]);
+    Route::post('/', [ \App\Http\Controllers\MenuItemController::class, 'store', 'as' => 'store' ]);
+    Route::patch('/{menu_item}', [ \App\Http\Controllers\MenuItemController::class, 'update', 'as' => 'update' ]);
+    Route::delete('/{menu_item}', [ \App\Http\Controllers\MenuItemController::class, 'destroy', 'as' => 'delete' ]);
   });
 
   // tools - compass

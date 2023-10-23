@@ -29,9 +29,7 @@ class MenuItem extends Model
     'is_active' => 'boolean',
   ];
 
-  // static / hooks
-
-  //refs
+  // refs
   public function menu(): BelongsTo
   {
     return $this->belongsTo(Menu::class, 'menu_id', 'id');
